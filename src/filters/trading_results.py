@@ -1,12 +1,12 @@
-from fastapi_filter.contrib.sqlalchemy import Filter
+from dataclasses import dataclass
 
-from src.models.trading_results import SpimexTradingResults
+from fastapi import Query
+
+from src.filters.base import BaseFilter
 
 
-class TradingResultsFilter(Filter):
-    oil_id: str | None
-    delivery_type_id: str | None
-    delivery_basis_id: str | None
-
-    class Constants(Filter.Constants):
-        model = SpimexTradingResults
+@dataclass
+class TradingResultsFilter(BaseFilter):
+    oil_id: str | None = Query(None)
+    delivery_type_id: str | None = Query(None)
+    delivery_basis_id: str | None = Query(None)

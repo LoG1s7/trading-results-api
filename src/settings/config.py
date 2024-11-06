@@ -4,6 +4,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     """Класс для настроек проекта, хранения и валидации переменных окружения."""
 
+    MODE: str
+
     DB_NAME: str
     DB_HOST: str
     DB_PORT: str
@@ -23,4 +25,4 @@ DATABASE_URL = (
     f"{settings.DB_HOST}:5432/{settings.DB_NAME}"
 )
 
-REDIS_URL = f"redis://{settings.REDIS_HOST}:{settings.REDIS_PORT}"
+REDIS_URL = f"redis://{settings.REDIS_HOST}:6379"
